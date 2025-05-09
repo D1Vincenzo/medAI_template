@@ -1,0 +1,94 @@
+.
+├── configs
+│   ├── callbacks
+│   │   ├── default.yaml
+│   │   ├── early_stopping.yaml
+│   │   ├── model_checkpoint.yaml
+│   │   ├── model_summary.yaml
+│   │   ├── none.yaml
+│   │   └── rich_progress_bar.yaml
+│   ├── data
+│   ├── datamodule
+│   ├── debug
+│   │   ├── default.yaml
+│   │   ├── fdr.yaml
+│   │   ├── limit.yaml
+│   │   ├── overfit.yaml
+│   │   └── profiler.yaml
+│   ├── eval.yaml
+│   ├── experiment
+│   │   └── example.yaml
+│   ├── extras
+│   │   └── default.yaml
+│   ├── hydra
+│   │   └── default.yaml
+│   ├── __init__.py
+│   ├── local
+│   ├── logger
+│   │   ├── aim.yaml
+│   │   ├── comet.yaml
+│   │   ├── csv.yaml
+│   │   ├── many_loggers.yaml
+│   │   ├── mlflow.yaml
+│   │   ├── neptune.yaml
+│   │   ├── tensorboard.yaml
+│   │   └── wandb.yaml
+│   ├── loss
+│   │   ├── dice_ce.yaml
+│   │   ├── focal.yaml
+│   │   └── tversky.yaml
+│   ├── model
+│   ├── paths
+│   │   └── default.yaml
+│   ├── trainer
+│   │   ├── cpu.yaml
+│   │   ├── ddp_sim.yaml
+│   │   ├── ddp.yaml
+│   │   ├── default.yaml
+│   │   ├── gpu.yaml
+│   │   └── mps.yaml
+│   └── train.yaml
+├── data
+├── environment.yaml
+├── logs
+├── Makefile
+├── notebooks
+├── pyproject.toml
+├── README.md
+├── requirements.txt
+├── scripts
+├── setup.py
+├── src
+│   ├── data
+│   │   ├── components
+│   │   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   └── mnist_datamodule.py
+│   ├── eval.py
+│   ├── __init__.py
+│   ├── losses
+│   │   ├── dice_ce.py
+│   │   ├── focal.py
+│   │   ├── __init__.py
+│   │   └── tversky.py
+│   ├── models
+│   │   ├── components
+│   │   │   └── __init__.py
+│   │   └── __init__.py
+│   ├── tasks
+│   ├── train.py
+│   └── utils
+│       ├── __init__.py
+│       ├── instantiators.py
+│       ├── logging_utils.py
+│       ├── pylogger.py
+│       ├── rich_utils.py
+│       └── utils.py
+├── tests
+│   ├── conftest.py
+│   ├── helpers
+│   │   └── __init__.py
+│   └── __init__.py
+└── tree.txt
+
+35 directories, 70 files
