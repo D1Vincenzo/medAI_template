@@ -15,7 +15,7 @@ def get_train_transforms():
         CropForegroundd(keys=["image", "label"], source_key="image"),
         RandCropByPosNegLabeld(
             keys=["image", "label"], label_key="label", spatial_size=(96, 96, 96),
-            pos=1, neg=1, num_samples=4, image_key="image", image_threshold=0),
+            pos=1, neg=1, num_samples=1, image_key="image", image_threshold=0),
         RandFlipd(keys=["image", "label"], spatial_axis=[0], prob=0.10),
         RandFlipd(keys=["image", "label"], spatial_axis=[1], prob=0.10),
         RandFlipd(keys=["image", "label"], spatial_axis=[2], prob=0.10),
