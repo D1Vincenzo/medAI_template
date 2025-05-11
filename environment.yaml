@@ -43,3 +43,4 @@ dependencies:
       - h5py
       - batchgenerators
       - nibabel
+      - monai

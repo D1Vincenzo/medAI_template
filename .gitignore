@@ -146,7 +146,6 @@ dmypy.json
 
 # Lightning-Hydra-Template
 configs/local/default.yaml
-/data/
 /logs/
 .env
 
@@ -155,3 +154,12 @@ configs/local/default.yaml
 
 # Resources
 resources/
+
+# datasets
+datasets/
+raw_datasets/
+
+# checkpoints
+best_metric_model.pth
+
+data/__init__.py
