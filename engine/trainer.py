@@ -81,8 +81,12 @@ class Trainer:
         # ✅ 平均 Dice
         mean_dice_val = sum(full_dice) / len(full_dice)
         print(f"\n✅ Mean Dice (excluding background): {mean_dice_val:.4f}")
-
-        return mean_dice_val
+        
+        class_6_dice = full_dice[5] 
+        print(f"Class 6 Dice: {class_6_dice:.4f}")
+        
+        # return mean_dice_val
+        return class_6_dice
 
     # ==== 训练函数 ====
     def train(self, do_validation=False):
