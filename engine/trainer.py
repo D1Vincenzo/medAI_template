@@ -27,7 +27,7 @@ class Trainer:
             weight_decay=cfg.WEIGHT_DECAY,
         )
 
-        self.dice_metric = DiceMetric(include_background=False, reduction="mean", get_not_nans=False)
+        self.dice_metric = DiceMetric(include_background=False, reduction="none", get_not_nans=False)
         self.max_epochs = cfg.MAX_EPOCHS
         self.eval_epoch = cfg.EVAL_EPOCH
         self.eval_num = cfg.EVAL_NUM
@@ -57,8 +57,31 @@ class Trainer:
                 val_output_convert = [self.post_pred(t) for t in val_outputs_list]
                 self.dice_metric(y_pred=val_output_convert, y=val_labels_convert)
 
-        mean_dice_val = self.dice_metric.aggregate().item()
+        # mean_dice_val = self.dice_metric.aggregate().item()
+        
+        dice_array = self.dice_metric.aggregate(reduction=None).cpu().numpy()  # shape = (batch, classes)
         self.dice_metric.reset()
+
+        # ✅ 取 batch 维度平均（常见做法），得到每类 Dice 值
+        if dice_array.ndim == 2:
+            dice_per_class = dice_array.mean(axis=0)  # 平均每类 Dice
+        else:
+            dice_per_class = dice_array  # fallback：已经是 1D
+
+        # 构造完整类列表（13 前景类）
+        full_dice = [0.0] * (cfg.NUM_CLASSES - 1)
+        for i in range(min(len(full_dice), len(dice_per_class))):
+            full_dice[i] = float(dice_per_class[i])  # ✅ 强制转换为 float
+
+        print("\n🔎 Per-Class Dice Scores:")
+        for i, score in enumerate(full_dice):
+            print(f"  Class {i + 1}: Dice = {score:.4f}")
+
+
+        # ✅ 平均 Dice
+        mean_dice_val = sum(full_dice) / len(full_dice)
+        print(f"\n✅ Mean Dice (excluding background): {mean_dice_val:.4f}")
+
         return mean_dice_val
 
     # ==== 训练函数 ====
