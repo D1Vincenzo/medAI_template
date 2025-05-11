@@ -7,10 +7,7 @@ channels:
 
 dependencies:
   - python=3.10
-  - pytorch=2.*
-  - torchvision=0.*
-  - torchaudio=2.*
-  - cudatoolkit=11.8
+  - cudatoolkit=12.1
   - lightning=2.*
   - torchmetrics=0.*
   - hydra-core=1.*
@@ -25,6 +22,9 @@ dependencies:
   - tensorboardx=2.*
   - pip>=23
   - pip:
+      - torch==2.1.0+cu121
+      - torchvision==0.16.0+cu121
+      - torchaudio==2.1.0+cu121
       - hydra-optuna-sweeper
       - hydra-colorlog
       - rootutils
@@ -44,3 +44,4 @@ dependencies:
       - batchgenerators
       - nibabel
       - monai
+      - einops

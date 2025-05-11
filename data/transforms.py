@@ -14,6 +14,7 @@ from monai.transforms import (
     RandShiftIntensityd,
     AsDiscrete,
 )
+from configs import unetr_cfg as cfg
 
 def get_train_transforms():
     train_transforms = Compose(
@@ -41,7 +42,7 @@ def get_train_transforms():
                 spatial_size=(96, 96, 96),
                 pos=1,
                 neg=1,
-                num_samples=1,
+                num_samples=cfg.NUM_SAMPLES,
                 image_key="image",
                 image_threshold=0,
             ),
