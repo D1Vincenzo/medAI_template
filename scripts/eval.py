@@ -53,6 +53,11 @@ def main():
             plt.imshow(torch.argmax(val_outputs, dim=1).detach().cpu()[0, :, :, slice_idx])
 
             plt.show()
+            
+            # optional: save
+            save_path = os.path.join(cfg.OUTPUT_DIR, "eval", f"case_{i}.png")
+            plt.savefig(save_path)
+            plt.close()
         
 
 if __name__ == "__main__":
